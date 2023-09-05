@@ -1,3 +1,4 @@
+import { housesService } from "../services/HousesService.js";
 import BaseController from "../utils/BaseController.js";
 
 
@@ -10,7 +11,8 @@ export class HousesController extends BaseController {
 
     async createHouse(request, response, next) {
         try {
-
+            const house = await housesService.createHouse(request.body)
+            response.send(house)
         } catch (error) {
             next(error)
         }
